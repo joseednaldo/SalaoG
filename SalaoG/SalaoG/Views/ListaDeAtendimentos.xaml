@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+                Title="Relação de Comandas"
+                xmlns:vm="clr-namespace:SalaoG.ViewModels"
+             x:Class="SalaoG.Views.ListaDeAtendimentos">
+
+
+    <ContentPage.BindingContext>
+        <vm:ListaAtendimentoViewModel></vm:ListaAtendimentoViewModel>
+    </ContentPage.BindingContext>
+
+    
+    <ContentPage.Content>
+
+        <StackLayout>
+
+            <ListView x:Name="listViewAtendimento" HasUnevenRows="True">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Margin="6,4,6,4" BackgroundColor="White" HorizontalOptions="FillAndExpand">
+                                
+                                <Label  HorizontalOptions="Center" Text="{Binding numeroCOMANDA,StringFormat='Comanda {0:F0}'}" 
+                                        Margin="8"
+                                        FontAttributes="Bold"
+                                        FontSize="Medium"></Label>
+                                    <Label HorizontalOptions="Center" TextColor="Green" Text="{Binding Total,StringFormat='Pagamento OK R$: {0:F2}'}"
+                                       Margin="8,2,8,4"
+                                       FontSize="Small"></Label>
+
+
+                                <Label HorizontalOptions="Center" TextColor="Black" Text="{Binding movimentacao}"
+                                       Margin="8,2,8,4"
+                                       FontSize="Small"></Label>
+
+
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:SalaoG.ViewModels"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             Title="Login"
+             x:Class="SalaoG.Views.LoginView" BackgroundColor="White">
+    
+    <ContentPage.BindingContext>
+        <vm:LoginViewModel></vm:LoginViewModel>
+    </ContentPage.BindingContext>
+    
+    
+    <ContentPage.Content >
+        <StackLayout VerticalOptions="Center" Margin="7" 
+                     Padding="10" 
+                     BackgroundColor="Transparent"
+                     FlowDirection="MatchParent">
+            <Frame  BorderColor="DarkBlue"
+                    CornerRadius="8"
+                    HasShadow="True"
+                    Padding="8">
+                <StackLayout>
+                    <Entry Placeholder="CPF"   PlaceholderColor="Black" Text="{Binding Usuario}" FontAttributes="Bold"></Entry>
+                    <Entry Placeholder="Senha" PlaceholderColor="Black" Text="{Binding Senha}" FontAttributes="Bold" IsPassword="True"></Entry>
+
+                    <Button
+                    HorizontalOptions="Fill" 
+                    Text="ENTRAR" 
+                    Command="{Binding EntrarCommand}"
+                    Margin="18,0,20,20" WidthRequest="-1" FontAttributes="Bold"/>
+
+                    <StackLayout    VerticalOptions="Center" Margin="0" 
+                                    BackgroundColor="Transparent">
+
+                        <Button     
+                                    TextColor="Red" Text="Esqueci minha senha ?" 
+                                    Clicked="RecuperaSenha"    
+                                    BackgroundColor="Transparent" FontSize="12"/>
+
+                    </StackLayout>
+
+                </StackLayout>
+            </Frame>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

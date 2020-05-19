@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+              xmlns:vm="clr-namespace:SalaoG.ViewModels"
+             x:Class="SalaoG.Views.AtendimentoAvulso">
+
+    <ContentPage.BindingContext>
+        <vm:AtendimentoAvulsoViewModel></vm:AtendimentoAvulsoViewModel>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="Transparent" Margin="64">
+
+            <Picker x:Name="listaServico" Title="Selecione o serviço"
+                    TitleColor="Red"
+                    ItemsSource="{Binding Servicos}"
+                    ItemDisplayBinding="{Binding descricaoSERVICO}"
+                    SelectedItem="{Binding ServicoSelecionado}"
+                />
+            <StackLayout>
+                <DatePicker VerticalOptions="CenterAndExpand"  FontSize="Medium" HorizontalOptions="CenterAndExpand" IsEnabled="false" DateSelected="DatePicker_DateSelected"></DatePicker>
+            </StackLayout>
+
+
+            <StackLayout>
+                <ListView x:Name="listViewVeiculos" HasUnevenRows="True"  
+                          ItemSelected="listViewVeiculos_ItemSelected" 
+                          ItemTapped="listViewVeiculos_ItemTapped">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <ViewCell.View>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label TextColor="Black" Text="{Binding descricaoSERVICO}" FontSize="15" FontAttributes="Bold"    VerticalTextAlignment="Center"></Label>
+                                        <Label Text="{Binding precoSERVICO,StringFormat='R$: {0:F2}'}" FontAttributes="Bold" FontSize="10" TextColor="Red" VerticalTextAlignment="End"></Label>
+                                        <Button Text="Remover"  WidthRequest="-1" VerticalOptions="CenterAndExpand"  Clicked="Remove_Clicked"></Button>
+                                    </StackLayout>
+                                </ViewCell.View>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                
+            </StackLayout>
+
+            <StackLayout>
+                <Picker x:Name="fpgto"
+                    Title="Selecione o pagamento"
+                    TitleColor="Red">   
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Dinheiro</x:String>
+                            <x:String>Cartão de débito</x:String>
+                            <x:String>Cartão de crédito</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+
+            </StackLayout>
+
+            <!--<Button Text="Concluir"  Command="{Binding FinalizarAtendimento}"></Button>-->
+            <Button Text="Confirma"  Clicked="Atendimento_Clicked"></Button>
+   
+
+        </StackLayout>
+    </ContentPage.Content>
+    
+</ContentPage>

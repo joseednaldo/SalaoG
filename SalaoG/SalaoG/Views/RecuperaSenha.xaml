@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             Title="ESQUECI MINHA SENHA"
+             x:Class="SalaoG.Views.RecuperaSenha">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="Transparent" Margin="64">
+
+            <Entry Margin="20" Placeholder="Digite o seu e-mail" 
+                   PlaceholderColor="Brown" Text="{Binding Usuario}" FontAttributes="Bold">
+            </Entry>
+
+            <Button BackgroundColor="DarkBlue" 
+                        BorderColor="Black"
+                        BorderWidth="-1"
+                Clicked="Button_Clicked"
+                TextColor="White"
+                HorizontalOptions="Fill" 
+                Text="TESTE" 
+                Margin="18,0,20,20"   WidthRequest="-1" FontAttributes="Bold"/>
+        </StackLayout>
+
+    </ContentPage.Content>
+</ContentPage>
